@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float currentTime = 0f;
     public float startingTime = 10f;
+    bool SceneLoaded = false;
 
     public Text countdownText;
 
@@ -25,6 +27,14 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
+            if(SceneLoaded == false)
+            {    LoadScene(); }
         }
+    }
+
+    void LoadScene()
+    {
+        SceneLoaded = true;
+        SceneManager.LoadScene("ItsOver");
     }
 }

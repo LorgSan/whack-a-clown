@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClownBehavior : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ClownBehavior : MonoBehaviour
     BoxCollider2D col;
     Animator anim;
     float animLength;
+    SpriteRenderer sexyRenderer;
+
     //ClownManager clownManager; //gamemanager instance saving
 
     void Start()
@@ -15,6 +18,7 @@ public class ClownBehavior : MonoBehaviour
         movingClown = transform.GetChild(0).gameObject;
         col = movingClown.GetComponent<BoxCollider2D>();
         anim = movingClown.GetComponent<Animator>();
+        sexyRenderer = movingClown.GetComponent<SpriteRenderer>();
         //clownManager = ClownManager.FindInstance();
     }
 
@@ -37,6 +41,7 @@ public class ClownBehavior : MonoBehaviour
         //Debug.Log("Stopped waiting");
         anim.Play("Idle");
         col.enabled = false; 
+        sexyRenderer.color = Color.white;
         ClownManager.Randomize();
     }
 }
