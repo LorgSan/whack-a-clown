@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class ClownManager : MonoBehaviour
 {
-    //GameObject jumpingClown;
-    public static List<GameObject> clowns;
-    public Color color;
+    public static List<GameObject> clowns; //create a list to hold the clowns
+    public Color color; //give them a color
 
     // Start is called before the first frame update
     void Start()
     {
-        clowns = new List<GameObject>();
-        foreach (Transform clown in transform) 
+        clowns = new List<GameObject>(); //initiate the list
+        foreach (Transform clown in transform) //for each child in the gameobject
         {
-            clowns.Add(clown.gameObject);
-            //Debug.Log(clown.gameObject);
+            clowns.Add(clown.gameObject); //add each child to the list
         }
 
-        Randomize();
+        Randomize(); //select a clown to appear
         
     }
 
     public static void Randomize()
     {
-        int randomIndex = Random.Range(0,9);
-        //Debug.Log(randomIndex);
-        GameObject jumpingClown = clowns[randomIndex];
-        Debug.Log(jumpingClown.name);
-        //jumpingClown.GetComponent<SpriteRenderer>().color = color;
-        jumpingClown.GetComponent<ClownBehavior>().PopUp();
+        int randomIndex = Random.Range(0,9); //pick a random clown
+        GameObject jumpingClown = clowns[randomIndex]; //set the variable as the randomly chosen clown
+        Debug.Log(jumpingClown.name); //print which clown was chosen in the console
+        jumpingClown.GetComponent<ClownBehavior>().PopUp(); //play the pop up animation for the chosen clown
         
     }
 }
